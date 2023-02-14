@@ -24,3 +24,9 @@ class RecipeController < ApplicationController
         @recipe = Recipe.find(params[:id]).destroy
         redirect_to user_recipe_index_path
       end
+
+      private
+        def recipe_params
+        params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
+        end
+    end
