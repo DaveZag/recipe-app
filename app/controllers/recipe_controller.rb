@@ -8,3 +8,9 @@ class RecipeController < ApplicationController
         @recipe_foods = @recipe.recipe_foods
         @foods = current_user.foods
       end
+
+      def new
+        @recipe = Recipe.new
+        @user = current_user
+      end
+    
