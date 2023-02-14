@@ -1,4 +1,7 @@
 class Inventory < ApplicationRecord
-    belongs_to :inventory
-    belongs_to :food, foreign_key: 'food_id'
+  belongs_to :user
+  has_many :inventory_foods, dependent: :destroy
+  has_many :foods, through: :inventory_foods, dependent: :destroy
+
+  validates :name, presence: true
 end
