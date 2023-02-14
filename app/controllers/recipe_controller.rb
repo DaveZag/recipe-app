@@ -19,3 +19,8 @@ class RecipeController < ApplicationController
         @recipe = @user.recipes.new(recipe_params)
         redirect_to user_recipe_index_path(user_id: current_user.id) if @recipe.save
       end
+
+      def destroy
+        @recipe = Recipe.find(params[:id]).destroy
+        redirect_to user_recipe_index_path
+      end
