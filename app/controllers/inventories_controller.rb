@@ -10,9 +10,6 @@ class InventoriesController < ApplicationController
     
     def new
         @inventory = Inventory.new
-        respond_to do |format|
-            format.html { render :new, locals: { inventory: @inventory } }
-        end
     end
     
     def create
@@ -23,8 +20,9 @@ class InventoriesController < ApplicationController
                     flash[:sucess] = 'Inventory Saved successfully'
                     redirect_to inventories_path
                 else
+                    redirect_to inventories_path
                     flash.now[:error] = 'Error: Inventory could not be saved'
-                    render { render :new, locals: { inventory: @inventory } }
+                    # render { render :new, locals: { inventory: @inventory } }
                 end
             end
         end

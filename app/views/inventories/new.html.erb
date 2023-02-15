@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Create new Inventory</h1>
+  <%= form_with model: @inventory, url: new_inventory_path, local: true do |form| %>
+    <%=form.text_field :name, class: 'py-2 px-4 border w-full focus:outline-orange-400', placeholder: 'Inventory name' %><br />
+    <%=form.text_area :description, class: 'py-2 px-4 border w-full focus:outline-orange-400', placeholder: 'Inventory description' %><br />
+    <%= form.submit 'Create', class: 'btn' %>
+  <% end %>
+</div>

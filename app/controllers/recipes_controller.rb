@@ -27,6 +27,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
+    
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipes_url, notice: 'Recipe was successfully created.' }
@@ -34,6 +35,8 @@ class RecipesController < ApplicationController
       else
         flash[:error] = 'Error: recipe could not be saved'
         redirect_to new_recipe_url
+        puts "\nNOT SAVED\n\n"
+        puts @recipe.valid?
       end
     end
   end
@@ -62,6 +65,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time)
+    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
   end
 end
