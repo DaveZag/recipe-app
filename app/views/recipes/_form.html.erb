@@ -15,7 +15,7 @@
   
     <%=form.text_field :name, class: 'py-2 px-4 border w-full focus:outline-orange-400', placeholder: 'Recipe name' %><br />
     <%=form.text_area :description, class: 'py-2 px-4 border w-full focus:outline-orange-400', placeholder: 'Recipe description' %><br />
-    <%=form.time_field :prepration_time, class: 'py-2 px-4 border w-full focus:outline-cyan-400', placeholder:'Prepration time',value: "%H:%M",min: 'hh:mm:ss',max: 'hh:mm:ss'%><br />
+    <%=form.time_field :preparation_time, class: 'py-2 px-4 border w-full focus:outline-cyan-400', placeholder:'Prepration time',value: "%H:%M",min: 'hh:mm:ss',max: 'hh:mm:ss'%><br />
     <%=form.time_field :cooking_time, class: 'py-2 px-4 border w-full focus:outline-orange-400', placeholder:'Cooking time',value: "%H:%M",min: 'hh:mm:ss',max: 'hh:mm:ss'%><br />
     <%= form.submit 'Create', class: 'bg-orange-500 py-3 px-6 text-white cursor-pointer hover:bg-orange-700'%>
   </div>

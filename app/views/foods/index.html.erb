@@ -1,16 +1,18 @@
-<%= link_to "New Food", new_food_path %>
-<%if @foods.any?%>
-  <% @foods.each do |food| %>
-    <p>Name <%= food.name %></p>
-    <p>Measurement unit <%= food.measurement_unit %></p>
-    <p> Price <%= food.price %></p>
-    <p>Quantity <%= food.quantity %></p>
-    <%= button_to 'Delete', food_path(food), method: :delete %>
-  <% end %>
-<%else%>
-  <div class="w-3/5 bg-white shadow-lg p-10">
+<div class="flex items-center flex-col mt-48 mb-48 container mx-auto">
+  <%= link_to "New Food", new_food_path, class: 'btn' %>
+  <%if @foods.any?%>
+    <% @foods.each do |food| %>
+      <p>Name <%= food.name %></p>
+      <p>Measurement unit <%= food.measurement_unit %></p>
+      <p> Price <%= food.price %></p>
+      <p>Quantity <%= food.quantity %></p>
+      <%= button_to 'Delete', food_path(food), method: :delete %>
+    <% end %>
+  <%else%>
+    <div class="w-3/5 bg-white shadow-lg p-10">
+      <div>
+        <p>No Foods yet</p>
+      </div>
     <div>
-      <p>No Foods yet</p>
-    </div>
-  <div>
-<%end%>
+  <%end%>
+</div>

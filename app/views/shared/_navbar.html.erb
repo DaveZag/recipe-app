@@ -13,9 +13,6 @@
       <div class="text-sm lg:flex-grow">
       <% if current_user %>
         <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-          Home
-        </a>
-        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         <%= link_to "Foods", foods_path %>
         </a>
         <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
@@ -23,6 +20,9 @@
         </a>
         <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
           <%= link_to "Shopping List", general_shopping_list_index_path %>
+        </a>
+        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          <%= link_to "Inventories", inventories_path %>
         </a>
       </div>
         </div>
