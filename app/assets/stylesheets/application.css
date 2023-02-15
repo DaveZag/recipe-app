@@ -13,3 +13,19 @@
 .btn:hover {
   filter: brightness(85%);
 }
+
+.center {
+  margin-inline: auto;
+  width: fit-content;
+  display: block;
+}
+
+table {
+  background-color: rgb(114, 248, 233);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+th {
+  padding: 1rem;
+}

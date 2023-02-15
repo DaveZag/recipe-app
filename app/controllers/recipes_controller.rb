@@ -35,8 +35,6 @@ class RecipesController < ApplicationController
       else
         flash[:error] = 'Error: recipe could not be saved'
         redirect_to new_recipe_url
-        puts "\nNOT SAVED\n\n"
-        puts @recipe.valid?
       end
     end
   end

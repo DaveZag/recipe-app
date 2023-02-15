@@ -1,10 +1,11 @@
 <div class="flex justify-center mt-48 mb-48 container mx-auto">
-    <div class="w-4/5 bg-white shadow-lg p-10">
-        <h1 class="section-title">
+    <div class="w-3/5 bg-white shadow-lg p-10">
+        <h1 class="section-title flex justify-between">
         <%= @inventory.name %>
+         <%= button_to "Add food", new_inventory_food_path, method: :get, class: 'btn' %>
         </h1>
 
-        <%= button_to "Add food", new_food_path, method: :get %>
+       
 
         <table>
         <tr>
@@ -12,7 +13,7 @@
             <th>Quantity</th>
             <th>Actions</th>
         </tr>
-        <% @inventory.inventory_food.includes(:food).each do |invfoo| %>
+        <% @inventory.inventory_foods.includes(:food).each do |invfoo| %>
             <tr>
                 <td> <%= invfoo.food.name %> </td>
                 <td> <%= invfoo.quantity %> </td>
