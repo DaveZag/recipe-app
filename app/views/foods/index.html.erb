@@ -1,8 +1,16 @@
 <%= link_to "New Food", new_food_path %>
-<% @foods.each do |food| %>
+<%if @foods.any?%>
+  <% @foods.each do |food| %>
     <p>Name <%= food.name %></p>
     <p>Measurement unit <%= food.measurement_unit %></p>
     <p> Price <%= food.price %></p>
     <p>Quantity <%= food.quantity %></p>
     <%= button_to 'Delete', food_path(food), method: :delete %>
-<% end %>
+  <% end %>
+<%else%>
+  <div class="w-3/5 bg-white shadow-lg p-10">
+    <div>
+      <p>No Foods yet</p>
+    </div>
+  <div>
+<%end%>

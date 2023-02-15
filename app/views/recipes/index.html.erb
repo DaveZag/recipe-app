@@ -1,0 +1,16 @@
+<div class="flex justify-center mt-48 mb-48 container mx-auto">
+  <div class="w-4/5 bg-white shadow-lg p-10">
+<h1 class="text-2xl font-bold border-b-2">Recipes</h1>
+
+<div class="flex justify-end mt-4">
+  <%= link_to "New recipe", new_recipe_path,  class: "py-3 px-6 bg-teal-500 mb-3 text-white hover:bg-orange-700" %>
+  </div>
+  <% @recipes.each do |recipe| %>
+    <%= render recipe %>
+    <p>
+      <%= link_to "Show this recipe", recipe, class: "text-green-400"%>
+    </p>
+  <% end %>
+</div>
+</div>
+</div>
