@@ -1,0 +1,28 @@
+<div class="flex justify-center mt-48 mb-48 container mx-auto">
+  <div class="w-4/5 bg-white shadow-lg p-10">
+<h1 class="text-center text-3xl font-semibold">ShoppingList</h1>
+<div class="w-1/2">
+<p class="my-2"><span class="text-blue-500 font-semibold"> Amount of food items to buy: </span><span class="font-semibold text-lg"><%= @food_items.count %> </span></p>
+<p><span class="text-blue-500 font-semibold">Total value of food needed: </span><span class="font-semibold text-lg"><%= @food_items.sum(:price) %></span></p>
+</div>
+<table  class="min-w-full table-auto border bg-white mt-5">
+    <thead class="bg-white-400 text-black">
+    <tr>
+    <th class="py-3 text-left px-5 font-semibold">Food</th>
+    <th class="py-3 text-left px-5 font-semibold">Quantity</th>
+    <th class="py-3 text-left px-5 font-semibold">Price</th>
+  </tr>
+    </thead>
+    <tbody>
+        <% @food_items.each do |food_item| %>
+            <tr class="hover:bg-gray-200 border">
+            <<td class="right py-3 px-5"><%= food_item.name %></td>
+            <td class="right py-3 px-5"><%= food_item.quantity %></td>
+            <td class="right py-3 px-5"><%= food_item.price %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
