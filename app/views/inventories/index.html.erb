@@ -1,0 +1,28 @@
+<div class="food-view">
+  <div class="flex justify-center mb-5" style="margin-top: 5rem">
+    <%= link_to 'Add Inventory', new_inventory_path, class: "btn btn-dark p-3" %>
+  </div>
+  <% Inventory.all.each do |inventory| %>
+    <div class="card mb-3 style-card border p-5" style="max-width: 750px; padding-left:30px; margin-inline: auto">
+      <div class="row flex gap-32">
+        <div class="col-md-4 flex flex-col">
+          <%= link_to inventory_path(inventory) do %>
+           <h2 class="mb-5"> <%= inventory.name %> </h2>
+          <% end %>
+
+           <% if can? :manage, inventory %>
+            <%= button_to "Delete", inventory_path(inventory) , data: {turbo: false}, method: :delete, class: "btn bg-red-300" %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"> It is a long established fact that a reader will be distracted by the readable 
+          content of a page when looking at its layout. 
+          The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+          as opposed to using 'Content here, content here', making it look like readable English.</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+

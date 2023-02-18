@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+}
+
+.btn {
+  background-color: rgb(20 184 166);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(85%);
+}
+
+.center {
+  margin-inline: auto;
+  width: fit-content;
+  display: block;
+}
+
+table {
+  display: block;
+  background-color: rgb(114, 248, 233);
+  width: 80%;
+  margin-top: 0.5rem;
+  margin-inline: auto !important;
+}
+
+h1 {
+  font-size: 2rem !important;
+}
+
+h2 {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+th {
+  padding: 1rem;
+}
+
+tr,
+td {
+  padding: 0.5rem 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.recipe-details {
+  margin-inline: auto;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.recipe-details > div {
+  flex-direction: column;
+}
+
+.popup {
+  width: 50% !important;
+  height: 20rem;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(254, 226, 226, 0.653);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  gap: 0.5rem;
+}

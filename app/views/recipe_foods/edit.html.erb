@@ -1,0 +1,12 @@
+<div class="flex recipe-edit justify-center mt-40 container mx-auto">
+  <div class="w-2/5 bg-white shadow-lg pb-1 px-1 pt-1">
+    <div class="recipeFoodEditContainer">
+      <h1 class="recipeFoodEdit">Edit Recipe Food</h1>
+      <%= render "update", recipe_foods: @recipe_foods %>
+      <br>
+      <div>
+        <%= link_to "Back to recipe foods", recipe_path(params[:recipe_id]) %>
+      </div>
+    </div>
+  </div>
+</div> 

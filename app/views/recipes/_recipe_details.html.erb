@@ -1,0 +1,61 @@
+<div class="flex flex-col items-center justify-center">
+
+	<h1 class="text-3xl text-gray-700 font-semibold text-center"><%=recipe.name%></h1>
+	<p class="font-semibold text-gray-600 text-center">Preparation time: <%=recipe.preparation_time%></p>
+	<div class="flex justify-end">
+		 <%=form_with url: recipe_path, method: :put do %>
+             public: <label class="switch">
+               <%= check_box_tag "",@recipe.public,@recipe.public, onchange: "this.form.submit()" %>
+               <span class="slider round"></span>
+             </label>
+             <%end%> 
+  </div>
+  <p class="font-semibold text-gray-600 text-center">Cooking time: <%=recipe.cooking_time%></p>
+  <p class="text-center font-semibold text-xl">Description: <%=recipe.description%></p>
+
+  <%= link_to "Back to recipes", recipes_path, class:"no-underline hover:underline text-purple-700 text-lg"%>
+
+  <div class="d-flex justify-content-between">
+    <button type="button" class="bg-teal-500 btn open-btn">Generate Shopping List</button>
+    <%= link_to "Add Ingredients", new_recipe_recipe_food_path(@recipe), class:"btn"%>
+  </div>
+  <table class="table table-striped table-dark ">
+    <thead>
+      <tr class="divide-x">
+        <th class="flex align-left pl-1">Food</th>
+        <th class="ml-0">Quantity</th>
+        <th class="flex pl-1">Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @recipe_foods.each do |recipe_food| %>
+        <tr
+          class="odd:bg-gray-200 divide-x divide-gray-300"
+        >
+          <td class="flex align-top m-auto"><%= recipe_food.food.name %></td>
+          <td class="px-3 py-2"><%= recipe_food.quantity %></td>
+          <td><%= @price %></td>
+          <td>
+              <div class="status w-64 flex justify-around text-xs">
+                <span class="badge bg-blue-400 text-white rounded-sm px-1 py-0.5 uppercase grid place-items-center">
+                  <%= link_to "Edit this recipe", edit_recipe_recipe_food_path(@recipe, recipe_food), class: "btn btn-primary" %>
+                </span>
+              </div>
+          </td>
+
+          <td>
+              <div class="w-64 flex justify-around text-xs text-sm text-red-600 border-red-400 rounded-sm border-2 px-1 py-0.5">
+              <%= button_to 'Delete', recipe_recipe_food_path(@recipe, id: recipe_food), method: :delete, data: { turbo: false }, class: 'btn btn-danger' %>
+              </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  </div>
+</div>
+
+</div>
