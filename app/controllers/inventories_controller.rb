@@ -14,7 +14,7 @@ class InventoriesController < ApplicationController
   def create
     @inventory = Inventory.new(inventory_params)
     if @inventory.save
-      redirect_to inventory_path(param[:id])
+      redirect_to inventory_path(params[:id])
     else
       render :new
     end
