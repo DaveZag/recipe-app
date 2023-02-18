@@ -20,7 +20,7 @@
               <td class="col-sm-4"><%= food.name %></td>
               <td class="col-sm-4"><%= food.measurement_unit %></td>
               <td class="col-sm-4"><%= food.price %></td>
-              <td class="col-sm-4"><%= link_to "Delete", food, method: :delete, class: 'btn bg-red-300' %></td>
+              <td class="col-sm-4"><%= button_to "Delete", food_path(food) , data: {turbo: false}, method: :delete, class: "btn bg-red-300" %></td>
             </tr>    
           <% end %>
         </tbody> 
@@ -28,6 +28,11 @@
       </table>
     </div>
   <%else%>
+    <div id="foods" class="container flex flex-col gap-4" >
+      <div class="food-btn self-center mb-5">
+        <%= link_to "New Food", new_food_path, class: 'btn' %>
+      </div>
+    </div>
     <div class="w-3/5 bg-white shadow-lg p-10">
       <div>
         <p>No Foods yet</p>
