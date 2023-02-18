@@ -5,7 +5,6 @@
       <p>Name <%= food.name %></p>
       <p>Measurement unit <%= food.measurement_unit %></p>
       <p> Price <%= food.price %></p>
-      <p>Quantity <%= food.quantity %></p>
       <%= button_to 'Delete', food_path(food), method: :delete %>
     <% end %>
   <%else%>
