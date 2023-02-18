@@ -11,6 +11,9 @@ class FoodsController < ApplicationController
   def create
     @food = Food.new(food_params)
 
+    puts
+    puts @food.valid?
+    puts @food.save
     if @food.save
       redirect_to foods_path, notice: 'Food was successfully created.'
     else
@@ -48,6 +51,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price, :quantity).merge(user: current_user)
+    params.require(:food).permit(:name, :measurement_unit, :price)
   end
 end
