@@ -1,12 +1,32 @@
-<div class="flex items-center flex-col mt-48 mb-48 container mx-auto">
-  <%= link_to "New Food", new_food_path, class: 'btn' %>
+<div class="flex items-center flex-col mt-32 container w-3/4 mx-auto">
+  
   <%if @foods.any?%>
-    <% @foods.each do |food| %>
-      <p>Name <%= food.name %></p>
-      <p>Measurement unit <%= food.measurement_unit %></p>
-      <p> Price <%= food.price %></p>
-      <%= button_to 'Delete', food_path(food), method: :delete %>
-    <% end %>
+    <div id="foods" class="container flex flex-col gap-4" >
+      <div class="food-btn self-center">
+        <%= link_to "New Food", new_food_path, class: 'btn' %>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-sm-4">Food</th>
+            <th class="col-sm-4">Measurement Unit</th>
+            <th class="col-sm-4">Price</th>
+            <th class="col-sm-4">Actions</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td class="col-sm-4"><%= food.name %></td>
+              <td class="col-sm-4"><%= food.measurement_unit %></td>
+              <td class="col-sm-4"><%= food.price %></td>
+              <td class="col-sm-4"><%= link_to "Delete", food, method: :delete, class: 'btn bg-red-300' %></td>
+            </tr>    
+          <% end %>
+        </tbody> 
+      
+      </table>
+    </div>
   <%else%>
     <div class="w-3/5 bg-white shadow-lg p-10">
       <div>
@@ -15,3 +35,4 @@
     <div>
   <%end%>
 </div>
+

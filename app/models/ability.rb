@@ -6,6 +6,6 @@ class Ability
 
     can :destroy, Food, user_id: user.id
     can :destroy, Recipe, user_id: user.id
-    can :destroy, Inventory, user:
+    can :manage, Inventory, user:
   end
 end

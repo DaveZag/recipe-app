@@ -1,7 +1,7 @@
 <div class="flex justify-center mt-48 mb-48 container mx-auto">
   <div class="w-3/5 bg-white shadow-lg pb-10 px-10 pt-5">
     <h1 class="create-title text-center">Add A New Inventory Food</h1>
-        <%= form_with  url: inventory_inventory_foods_path(inventory_id: params[:inventory_id]), method: :post, local: true, scope: :@inventory_food do |f| %>
+        <%= form_with model:@inventory_food, url: inventory_inventory_foods_path(inventory_id: params[:inventory_id]), method: :post, local: true, scope: :@inventory_food do |f| %>
             <div class="form-group">
                 <div class="form-outline mb-4">
                     <%= f.label :quantity, class: "form-label" %><br />
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="submit-btn">
-                    <%= f.submit 'Save' ,class: "btn btn-primary btn-lg btn-block"  %>
+                    <%= f.submit 'Save' ,class: "btn bg-teal-400"  %>
                 </div>
             </div>
         <% end %>

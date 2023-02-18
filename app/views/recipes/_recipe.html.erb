@@ -1,5 +1,10 @@
-<div id="<%= dom_id recipe %>">
-	<p><%=recipe.name%></p>
-	<p><%=recipe.description%></p>
-	<%= button_to "Remove", recipe_path(id:recipe.id), method: :delete%>	
+<div id="<%= dom_id recipe %>" class=" recipe-details flex justify-between w-4/5 mb-4">
+	<div class="flex ">
+		 <h2 class="mb-4">  <%= link_to recipe.name, recipe_path(recipe.id) %> </h2>
+		
+		<%= button_to "Remove", recipe_path(id:recipe.id), method: :delete, class:'w-fit btn bg-red-300'%>
+
+
+	</div>
+	<p class="ml-10"><%=recipe.description%></p>
 </div>
