@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
 .btn {
   background-color: rgb(20 184 166);
   padding: 0.5rem;
@@ -58,4 +62,21 @@ td {
 
 .recipe-details > div {
   flex-direction: column;
+}
+
+.popup {
+  width: 50% !important;
+  height: 20rem;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(254, 226, 226, 0.653);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  gap: 0.5rem;
 }
