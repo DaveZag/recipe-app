@@ -22,7 +22,7 @@ class RecipeFoodsController < ApplicationController
         flash[:sucess] = 'Recipe_food created successfully'
       else
         puts recipe_food
-        puts "NOT SAVED"
+        puts 'NOT SAVED'
       end
     end
     redirect_to recipe_path(params[:recipe_id])
@@ -50,7 +50,7 @@ class RecipeFoodsController < ApplicationController
 
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
-    
+
     if @recipe_food.delete
       flash[:sucess] = 'Food deleted successfully'
     else

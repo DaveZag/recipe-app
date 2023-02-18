@@ -19,7 +19,9 @@ class RecipesController < ApplicationController
     @inventory_data = Inventory.all
     return if params[:inventory_id].nil?
 
+    # rubocop:disable Layout/LineLength
     @foods = RecipeFood.joins(:food).select('foods.id as food_id, name as food_name, quantity, price, quantity * price as value, recipe_id').where(recipe_id: params[:id])
+    # rubocop:enable Layout/LineLength
   end
 
   # GET /recipes/new
