@@ -1,6 +1,2 @@
 <%= render partial: 'recipe_details', locals: {recipe: @recipe} %>
 
-<div>
-  <%= link_to "Back to recipes", recipes_path, class: 'bg-blue-400'%>
-  <%= button_to "Delete recipe", @recipe, method: :delete,class: 'bg-red-400' %>
-</div>

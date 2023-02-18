@@ -18,7 +18,7 @@ class InventoryController < ApplicationController
       user_id: current_user.id
     )
     if @inventory.save
-      redirect_to user_inventory_index_path(current_user.id)
+      redirect_to inventory_index_path
     else
       render :new
     end
@@ -27,8 +27,7 @@ class InventoryController < ApplicationController
   def destroy
     @inventory = Inventory.find_by(id: params[:id])
 
-    redirect_to user_inventory_index_path(current_user.id)
-
+    redirect_to inventory_index_path
     if @inventory.destroy
       flash[:success] = 'Inventory deleted'
     else

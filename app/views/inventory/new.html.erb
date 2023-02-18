@@ -1,18 +1,15 @@
-<div class="new-food-container container justify-content-center d-flex flex-column ">
+<div class="flex justify-center mt-48 mb-48 container mx-auto">
+  <div class="w-3/5 bg-white shadow-lg pb-10 px-10 pt-5">
     <h1 class="create-title">Add A New Inventory</h1>
-    <%= form_with model: @food, url: new_inventory_path(current_user.id) do |f| %>
+    <%= form_with model: @food, url: new_inventory_path do |f| %>
     <div class="form-group">
         <div class="form-outline mb-4">
-            <%= f.label :name %><br />
-            <%= f.text_field :name, class: "form-control form-control-lg" %>
-        </div>
-       <div class="form-outline mb-4">
-            <%= f.label :description %><br />
-            <%= f.text_area :description, class: "form-control form-control-lg" %>
+            <%= f.text_field :name, class: 'py-2 px-4 mt-3 border w-full focus:outline-orange-400', placeholder: 'Inventory name'%>
         </div>
         <div class="submit-btn">
              <%= f.submit  class: "btn btn-primary btn-lg btn-block"  %>
         </div>
     </div>
     <% end %>
+    </div>
 </div>

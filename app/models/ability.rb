@@ -1,3 +1,11 @@
 class Ability
   include CanCan::Ability
+
+  def initialize(user)
+    return unless user.present?
+
+    can :destroy, Food, user_id: user.id
+    can :destroy, Recipe, user_id: user.id
+    can :destroy, Inventory, user:
+  end
 end
