@@ -7,13 +7,13 @@ Rails.application.routes.draw do
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :recipes do 
+   resources :recipes, only: [:index, :show, :new, :create] do
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :foods, only: [:index, :show, :new, :create, :destroy]
-  get 'shopping_list' => 'foods#shopping_list'
-  resources :inventory do
+  resources :shopping_list, only: [:index, :create]
+  resources :inventories do
     resources :inventory_foods, only: [:new, :create, :destroy, :index]
   end
 

@@ -17,13 +17,19 @@ class RecipeFoodsController < ApplicationController
       @recipe_food.increment!(:quantity, inventory_food_params[:quantity].to_i)
       @recipe_food.save
     else
-      RecipeFood.create(recipe_food_params)
-      flash[:sucess] = 'Recipe_food created successfully'
+      recipe_food = RecipeFood.create(recipe_food_params)
+      if recipe_food.save
+        flash[:sucess] = 'Recipe_food created successfully'
+      else
+        puts recipe_food
+        puts "NOT SAVED"
+      end
     end
     redirect_to recipe_path(params[:recipe_id])
   end
 
   def edit
+    @user = current_user
     @recipe_food = RecipeFood.find(params[:id])
 
     respond_to do |format|
@@ -56,6 +62,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity, :food_id).merge(recipe: params[:recipe_id])
+    params.permit(:quantity, :food_id).merge(recipe_id: params[:recipe_id])
   end
 end

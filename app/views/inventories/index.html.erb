@@ -23,4 +23,5 @@
     </div>
   <% end %>
 </div>
+<%=@inventories = Inventory.where(user: current_user).inspect%>
 </div>
