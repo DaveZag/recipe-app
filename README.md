@@ -24,7 +24,7 @@
 
 # 📖 Recipe App <a name="about-project"></a>
 
-This project a functional Recipe app created using Ruby on Rails.
+This project a functional Recipe app created using Ruby on Rails. It allows user to create multiple recipes, foods, inventory lists and connect them together.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -40,6 +40,7 @@ This project a functional Recipe app created using Ruby on Rails.
   <ul>
     <li><a href="https://rubyonrails.org/">Rails</a></li>
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a href="https://www.tailwindcss.com/">Tailwind CSS</a></li>
   </ul>
 
 ### Key Features <a name="key-features"></a>
@@ -67,6 +68,7 @@ In order to run this project you need:
 
 - IDE or code editor: **VsCode, atom, sublime**...
 - To have [Ruby](https://www.ruby-lang.org/en/) and [Git](https://git-scm.com/) installed on your system.
+- To have [Node.js](https://nodejs.org/) installed on your system.
 
 After installing Ruby, run the following command to install rails.-
 
@@ -79,7 +81,7 @@ After installing Ruby, run the following command to install rails.-
 Clone this project on your local machine using the following command in your terminal:
 
 ```sh
-  git clone https://github.com/DaveZag/blog-app.git
+  git clone https://github.com/DaveZag/recipe-app.git
 ```
 
 ### Install
@@ -87,8 +89,9 @@ Clone this project on your local machine using the following command in your ter
 Run the following command to install all project's dependencies:
 
 ```sh
-  cd blog-app
+  cd recipe-app
   bundle install
+  node install
 ```
 
 ### Usage
@@ -107,7 +110,7 @@ OR
   rails s
 ```
 
-### Run tests
+<!-- ### Run tests
 
 To run tests, run the following command:
 
@@ -116,7 +119,7 @@ Example command:
 ```sh
   gem install rails rspec
   rails spec spec/models/
-```
+``` -->
 
 ## 👥 Author <a name="authors"></a>
 
@@ -156,7 +159,7 @@ If you like this project, kindly give it a star ⭐️
 
 - Microverse
 - Ruby on Rails Documentation🙃
-- Every person who inspired this codebase
+- Every person who inspired this codebase.
 
 ## 📝 License <a name="license"></a>
 
