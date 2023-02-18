@@ -1,6 +1,13 @@
 <%= render partial: 'recipe_details', locals: {recipe: @recipe} %>
 
-<div>
-  <%= link_to "Back to recipes", recipes_path, class: 'bg-blue-400'%>
-  <%= button_to "Delete recipe", @recipe, method: :delete,class: 'bg-red-400' %>
-</div>
+<%# Popup section %>
+<div class="popup hidden">
+  <button class="close-btn btn">close </button>
+  <h1>Generating Shopping List</h1>
+  <p>Choose an inventory to use</p>
+
+  <%= form_with url: shopping_list_index_path(recipe_id: @recipe.id, inventory_id: :inventory_id), method: :get do |form| %>    
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <%= form.collection_select :inventory_id, @inventories.order(:name),:id,:name, :include_blank => "--Select inventory--" %>
+    <%= form.submit "Generate Shopping List" %>
+  <% end %>

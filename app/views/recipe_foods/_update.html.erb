@@ -1,27 +1,19 @@
-<%= form_with model: @recipe_foods, url: user_recipe_recipe_foods_path do |form| %>
-  <% if @recipe_foods.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@recipe_foods.errors.count, "error") %> prohibited this recipe_foods from being saved:</h2>
+<div class="flex justify-center mt-5 mb-5 container mx-auto">
+  <div class="w-3/5 bg-white shadow-lg pb-10 px-10 pt-5">
+    <%= form_with model: @recipe_foods, url: recipe_recipe_food_path(recipe_id: params[:recipe_id]), method: :put do |form| %>
+      <p>
+        <%= form.label :quantity, class: "foodFormLabel" %> <br>
+        <%= form.number_field :quantity, class: 'py-2 px-4 mt-3 border w-half focus:outline-orange-400' %>
+      </p>
 
-      <ul>
-        <% @recipe_foods.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <p>
+        <%= form.label :food_id, class: "foodFormLabel"%> <br>
+        <%= form.select :food_id, Food.all.collect {|food| [food.name, food.id]}, include_blanck: true %>
+      </p>
 
-  <p>
-    <%= form.label :quantity, class: "foodFormLabel" %> <br>
-    <%= form.number_field :quantity %>
-  </p>
-
-  <p>
-    <%= form.label :food_id, class: "foodFormLabel"%> <br>
-    <%= collection_select(:recipe_food, :food_id, @user.foods.order(name: :asc), :id, :name) %>
-  </p>
-
-  <div>
-    <%= form.submit 'Update', class: "foodFormSubmit" %>
+      <div>
+        <%= form.submit 'Update', class: "btn mt-4" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

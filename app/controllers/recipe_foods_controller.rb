@@ -2,23 +2,66 @@ class RecipeFoodsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @recipes = Recipe.all
+    @recipe_food = RecipeFood.new
+
+    respond_to do |format|
+      format.html { render :new, locals: { recipe_food: @recipe_food } }
+    end
   end
 
   def create
-    @recipes = Recipe.all
-    @recipe_food = RecipeFood.new(recipe_food_params)
+    @recipe_food = RecipeFood.find_by(recipe: recipe_food_params[:inventory],
+                                      food_id: recipe_food_params[:food_id])
 
-    if @recipe_food.save
-      redirect_to root_path, notice: 'Recipe food was successfully created.'
+    if @recipe_food
+      @recipe_food.increment!(:quantity, inventory_food_params[:quantity].to_i)
+      @recipe_food.save
     else
-      render :new, status: :unprocessable_entity
+      recipe_food = RecipeFood.create(recipe_food_params)
+      if recipe_food.save
+        flash[:sucess] = 'Recipe_food created successfully'
+      else
+        puts recipe_food
+        puts 'NOT SAVED'
+      end
     end
+    redirect_to recipe_path(params[:recipe_id])
+  end
+
+  def edit
+    @user = current_user
+    @recipe_food = RecipeFood.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :edit, locals: { recipe_food: @recipe_food } }
+    end
+  end
+
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+
+    if @recipe_food.update(recipe_food_params)
+      flash[:sucess] = ' updated successfully'
+    else
+      flash.now[:error] = 'Error: Recipe_food could not be updated'
+    end
+    redirect_to recipe_path(params[:recipe_id])
+  end
+
+  def destroy
+    @recipe_food = RecipeFood.find(params[:id])
+
+    if @recipe_food.delete
+      flash[:sucess] = 'Food deleted successfully'
+    else
+      flash.now[:error] = 'Error: Recipe could not be deleted'
+    end
+    redirect_to recipe_path(params[:recipe_id])
   end
 
   private
 
   def recipe_food_params
-    params.permit(:recipe_id, :food_id, :quantity)
+    params.permit(:quantity, :food_id).merge(recipe_id: params[:recipe_id])
   end
 end

@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   get 'pages/home'
   root 'public_recipes#index'
   get 'general_shopping_list/index'
-  resources :recipe_foods
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :recipes
+   resources :recipes, only: [:index, :show, :new, :create] do
+    resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   resources :foods, only: [:index, :show, :new, :create, :destroy]
-  get 'shopping_list' => 'foods#shopping_list'
-  resources :inventory do
-    resources :inventory_food, only: [:new, :create, :destroy, :index]
+  resources :shopping_list, only: [:index, :create]
+  resources :inventories do
+    resources :inventory_foods, only: [:new, :create, :destroy, :index]
   end
 
 end

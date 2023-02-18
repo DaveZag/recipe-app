@@ -31,23 +31,6 @@ class FoodsController < ApplicationController
     end
   end
 
-  def shopping_list
-    food_list = Food.all
-    recipe_foods = RecipeFood.all
-
-    @shopping_list = []
-    food_list.each do |food|
-      recipe_foods.each do |recipe_food|
-        next unless food.quantity < recipe_food.quantity && food.id == recipe_food.food_id
-
-        recipe_food.quantity -= food.quantity
-        @shopping_list << food
-        price = food.price * food.quantity
-        @total_price = @total_price.to_i + price.to_i
-      end
-    end
-  end
-
   private
 
   def food_params

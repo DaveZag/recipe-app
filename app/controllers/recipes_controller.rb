@@ -10,9 +10,18 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    user = current_user
-    @recipe = user.recipes.find(params[:id])
-    @foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food)
+    @user = current_user
+    @recipe = @user.recipes.find(params[:id])
+    @foods = RecipeFood.where(recipe_id: @recipe.id)
+    @recipe_foods = @recipe.recipe_foods
+    @inventories = Inventory.where(user: current_user)
+
+    @inventory_data = Inventory.all
+    return if params[:inventory_id].nil?
+
+    # rubocop:disable Layout/LineLength
+    @foods = RecipeFood.joins(:food).select('foods.id as food_id, name as food_name, quantity, price, quantity * price as value, recipe_id').where(recipe_id: params[:id])
+    # rubocop:enable Layout/LineLength
   end
 
   # GET /recipes/new
